@@ -1,0 +1,26 @@
+//- unless @sprints.errors.empty?
+//  #warning
+//    Errors prevented this movie from being #{controller.action_name}d:
+//    %ul
+//      - @sprints.errors.full_messages.each do |error|
+//        %li= error
+= label :sprint, :name, 'Name'
+= text_field :sprint, :name
+
+= label :sprint, :desc, 'Desc'
+= text_field :sprint, :desc
+
+= label :sprint, :start, 'Start'
+= date_select :sprint, :start
+
+= label :sprint, :end, 'End'
+= date_select :sprint, :end
+
+= label :sprint, :hours, 'Hours'
+= number_field :sprint, :hours
+
+= label :sprint, :parent, 'Parent'
+= select :sprint, :parent, @sprints.collect{|s| [s.name + ' ' + s.desc, s.id]}
+
+= label :sprint, :happy, '# of happy hours'
+= number_field :sprint, :happy

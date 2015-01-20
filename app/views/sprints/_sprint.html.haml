@@ -1,0 +1,15 @@
+%tr{:class => ('other_day' unless sprint.start == Date.today && sprint.end == Date.today)}
+  %td= sprint_counter
+  %td= link_to sprint.name, edit_sprint_path(sprint)
+  %td= sprint.start
+  %td= sprint.end
+  %td
+    - parent_sprint = @sprints.select{ |t| t.id == sprint.parent }[0]
+    - if parent_sprint
+      = parent_sprint.name
+    - else
+      = 'origin'
+  %td= sprint.hours
+  %td= sprint.happy
+  %td= sprint.desc
+  %td= button_to 'Delete', sprint_path(sprint), :method => :delete;

@@ -1,0 +1,24 @@
+!!! 5
+%html
+	%html
+		=# render :partial=>'sessions/login'
+		%title Lifesearch
+		= stylesheet_link_tag 'application'
+		= stylesheet_link_tag 'sprints'
+		= javascript_include_tag 'application'
+		= csrf_meta_tags
+		
+	%body
+		%div{:class => 'container'}
+			%header
+				= link_to(image_tag('pacman.png', :alt => 'Life Search', :class => 'round'), '/')
+				%nav{:class => "round"}
+					%ul
+						%li= link_to 'visual', '/sprints/visual'
+			%section{:class => 'round'}
+				-# this goes just inside %body:
+				- if flash[:notice]
+					#notice.message= flash[:notice]
+				- elsif flash[:warning]
+					#warning.message= flash[:warning]
+				= yield

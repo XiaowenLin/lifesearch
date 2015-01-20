@@ -1,0 +1,16 @@
+%h2 Edit A Sprint
+
+-# where form will be posted, loopup rake routes
+= form_tag sprint_path(@sprint), :method => :put do
+	= render :partial => 'form'
+	= submit_tag 'Save'
+-# path to the old sprints. Assignment is finished before any action. 
+- my_path = sprints_path
+- if @sprint
+	= @sprint.inspect
+	- if @sprint.new_record?
+		- my_path = sprints_path
+	- else
+		- my_path = sprint_path(@sprint)
+-# generate a form. the button submits to the URL created by the set of options
+= button_to 'Cancel', my_path, :method => :get

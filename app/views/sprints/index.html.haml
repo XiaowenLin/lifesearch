@@ -1,0 +1,21 @@
+%h1 All Sprints
+%table#sprints
+  %thead
+    %tr
+      %th #
+      %th Name
+      %th Start
+      %th End
+      %th Parent
+      %th Hours
+      %th # of Happy Hours
+      %th Desc
+      %th Remove
+  %tbody
+    = render :partial => 'sprint', :collection => @sprints
+  	
+= link_to 'New Sprint', new_sprint_path
+ 
+-# debug(@Sprints)
+-# raise @Sprints.inspect
+-# raise params.inspect
