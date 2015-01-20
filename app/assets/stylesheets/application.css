@@ -130,7 +130,7 @@ form label {
 }
 
 .node text {
-  font: 20px sans-serif;
+  font: 10px sans-serif;
   pointer-events: none;
   text-anchor: middle;
 }
