@@ -24,3 +24,8 @@
 
 = label :sprint, :happy, '# of happy hours'
 = number_field :sprint, :happy
+
+= label :temp, :repeat, 'repeat'
+= select :temp, :repeat, ['Never', 'TR Weekly', 'MWF Weekly', 'Weekly']
+
+%p #{local_variables}

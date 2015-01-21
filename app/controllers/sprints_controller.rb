@@ -7,15 +7,30 @@ class SprintsController < ApplicationController
     @sprints = Sprint.all
   end
 	def create
-		@sprint = Sprint.new(params[:sprint])
     @sprints = Sprint.all
-		if @sprint.save
-		  flash[:notice] = "#{@sprint.name} was successfully created."
-		  redirect_to sprints_path
-		else
-			flash[:warning] = "It wasn't created."
-		  render 'new' # note, 'new' template can access @sprint's field values!
-		end
+    repeat = params[:temp][:repeat]
+    @sprint = Sprint.new(params[:sprint])
+    if repeat == 'Never'
+      success = @sprint.save
+    elsif repeat == 'Weekly'
+      my_sprints = @sprint.repeat_weekly
+    elsif repeat == 'TR Weekly'
+      my_sprints = @sprint.repeat_tr_weekly
+    elsif repeat == 'MWF Weekly'
+      my_sprints = @sprint.repeat_mwf_weekly
+    else
+      return nil
+    end
+    if my_sprints
+      success = my_sprints.each { |t| t.save }[0]
+    end
+    if success
+      flash[:notice] = "#{@sprint.name} was successfully created."
+      redirect_to sprints_path
+    else
+      flash[:warning] = "It wasn't created."
+      render 'new' # note, 'new' template can access @sprint's field values!
+    end
 	end
 	def edit
 		@sprint = Sprint.find params[:id]
