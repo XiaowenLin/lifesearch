@@ -115,6 +115,9 @@ table#sprints th, table#sprints td {
 tr.other_day:hover {
   background-color: green;
 }
+tr#sprints_total {
+  background-color: #cff;
+}
 form label {
   display: block;
   line-height: 25px;

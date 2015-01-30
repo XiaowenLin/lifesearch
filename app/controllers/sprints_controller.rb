@@ -1,7 +1,8 @@
 #require 'stree'
 class SprintsController < ApplicationController
   def index
-    @sprints = Sprint.all
+    @q = Sprint.ransack(params[:q])
+    @sprints = @q.result(distinct: true)
   end
   def new
     @sprints = Sprint.all

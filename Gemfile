@@ -41,3 +41,6 @@ end
 gem 'haml-rails'
 gem "d3-rails"
 gem "rubytree"
+gem 'ransack'
+gem 'omniauth'
+gem 'omniauth-twitter'

@@ -1,11 +1,12 @@
 %h1 All Sprints
+= render :partial => 'table_filter'
 %table#sprints
   %thead
     %tr
       %th #
       %th Name
-      %th Start
-      %th End
+      %th= sort_link(@q, :start, 'Start', default_order: :desc)
+      %th= sort_link(@q, :end, 'End', default_order: :desc)
       %th Parent
       %th Hours
       %th # of Happy Hours
@@ -13,7 +14,16 @@
       %th Remove
   %tbody
     = render :partial => 'sprint', :collection => @sprints
-  	
+    %tr#sprints_total
+      %td today
+      %td
+      %td
+      %td
+      %td
+      %td#total_hours
+      %td#total_happy_hours
+      %td
+      %td
 = link_to 'New Sprint', new_sprint_path
  
 -# debug(@Sprints)
