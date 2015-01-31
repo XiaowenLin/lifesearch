@@ -51,3 +51,4 @@ gem "rubytree"
 gem 'ransack'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'rails_12factor', group: :production
