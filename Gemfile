@@ -52,3 +52,4 @@ gem 'ransack'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'rails_12factor', group: :production
+gem 'sass', '3.2.13'
