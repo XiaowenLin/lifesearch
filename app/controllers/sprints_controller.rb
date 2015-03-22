@@ -57,6 +57,10 @@ class SprintsController < ApplicationController
   end
   def visual
     @sprints = Sprint.where(user_id: @current_user.id)
+    if @sprints.count == 0
+      flash[:notice] = 'No sprints to see. Create your umtimate goal first!'
+      redirect_to sprints_path
+    end
     init_sprint = @sprints[0]
     root = Stree.new(init_sprint)
     @sprints[1..@sprints.size].each { |t|
