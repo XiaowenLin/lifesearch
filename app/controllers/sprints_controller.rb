@@ -2,15 +2,31 @@
 class SprintsController < ApplicationController
   def index
     @q = Sprint.ransack(params[:q])
-    @sprints = @q.result(distinct: true)
+    unless @current_user
+      flash[:notice] = "Please login to view your information."
+    else
+      sprints = @q.result(distinct: true)
+      @sprints = sprints.select {|s| s.user_id == @current_user.id}
+    end
   end
   def new
-    @sprints = Sprint.all
+# @sprints = Sprint.all
+    if @current_user
+      @sprints = Sprint.where(user_id: @current_user.id)
+    else
+      @sprints = []
+    end
   end
 	def create
-    @sprints = Sprint.all
+    unless @current_user
+      flask[:notice] = "Please login to view your informaiton"
+      redirect_to sprints_path
+    end
+    @sprints = Sprint.find_by_user_id(@current_user.id)
     repeat = params[:temp][:repeat]
     @sprint = Sprint.new(params[:sprint])
+    debugger
+    @sprint.user_id = @current_user.id
     if repeat == 'Never'
       success = @sprint.save
     elsif repeat == 'Weekly'

@@ -11,16 +11,19 @@
 = text_field :sprint, :desc
 
 = label :sprint, :start, 'Start'
-= date_select :sprint, :start, {:include_blank => true}
+= date_select :sprint, :start#, {:include_blank => true}
 
 = label :sprint, :end, 'End'
-= date_select :sprint, :end, {:include_blank => true}
+= date_select :sprint, :end#, {:include_blank => true}
 
 = label :sprint, :hours, 'Hours'
 = number_field :sprint, :hours
 
 = label :sprint, :parent, 'Parent'
-= select :sprint, :parent, @sprints.collect{|s| [s.name + ' ' + s.desc, s.id]}
+- if @sprints
+  = select :sprint, :parent, @sprints.collect{|s| [s.name + ' ' + s.desc, s.id]}
+- else
+  = select :sprint, :parent, []
 
 = label :sprint, :happy, '# of happy hours'
 = number_field :sprint, :happy

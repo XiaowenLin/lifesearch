@@ -11,7 +11,9 @@ class Sprint < ActiveRecord::Base
       (t - self.start)%7 == 0
     }
     my_sprints = dates.collect { |t|
-      Sprint.new(start: t, end: t, name: self.name, desc: self.desc, hours: self.hours, parent: self.parent)
+      Sprint.new(start: t, end: t, name: self.name, 
+          desc: self.desc, hours: self.hours, 
+          parent: self.parent, user_id: self.user_id)
     }
     return my_sprints
   end
@@ -54,6 +56,6 @@ class Sprint < ActiveRecord::Base
   end
   def copy
     res = Sprint.new(name: self.name, parent: self.parent, start: self.start, end: self.end, 
-        hours: self.hours, happy: self.happy, desc: self.desc)
+        hours: self.hours, happy: self.happy, desc: self.desc, user_id: self.user_id)
   end
 end
