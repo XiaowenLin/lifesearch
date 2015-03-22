@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   # user shouldn't have to be logged in before logging in!
   skip_before_filter :set_current_user
+  def new
+    flash[:notice] = 'Login to begin'
+  end
   def create
     auth=request.env["omniauth.auth"]
     user=User.find_by_provider_and_uid(auth["provider"],auth["uid"]) ||

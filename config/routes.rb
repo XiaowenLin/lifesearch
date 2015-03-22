@@ -59,4 +59,5 @@ Lifesearch::Application.routes.draw do
   get 'auth/:provider/callback' => 'sessions#create'
   match '/logout' => 'sessions#destroy'
   get  'auth/failure' => 'sessions#failure'
+  get '/login' => 'sessions#new'
 end

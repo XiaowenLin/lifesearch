@@ -20,10 +20,7 @@
 = number_field :sprint, :hours
 
 = label :sprint, :parent, 'Parent'
-- if @sprints
-  = select :sprint, :parent, @sprints.collect{|s| [s.name + ' ' + s.desc, s.id]}
-- else
-  = select :sprint, :parent, []
+= select :sprint, :parent, @sprints.collect{|s| [s.name + ' ' + s.desc, s.id]}
 
 = label :sprint, :happy, '# of happy hours'
 = number_field :sprint, :happy

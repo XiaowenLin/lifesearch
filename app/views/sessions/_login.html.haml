@@ -3,4 +3,4 @@
     %p.welcome user: #{@current_user.name}
     = button_to 'Logout', logout_path
   - else
-    %p.login= button_to 'Log in with Twitter', '/auth/twitter'
+    %p#login_button= button_to 'Log in with Twitter', '/auth/twitter'

@@ -14,7 +14,7 @@
 				%nav{:class => "round"}
 					%ul
 						%li= link_to 'visual', '/sprints/visual'
-			%section{:class => 'round'}
+			%section{:class => 'round', :id => 'white_board'}
 				-# this goes just inside %body:
 				- if flash[:notice]
 					#notice.message= flash[:notice]
