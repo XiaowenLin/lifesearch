@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150322054422) do
+ActiveRecord::Schema.define(:version => 20150322065331) do
 
   create_table "sprints", :force => true do |t|
     t.integer  "parent"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20150322054422) do
     t.integer  "happy"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

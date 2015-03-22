@@ -1,4 +1,5 @@
 class Sprint < ActiveRecord::Base
+  belongs_to :user
   # make all attr accessible
   attr_protected
   # validate entries
