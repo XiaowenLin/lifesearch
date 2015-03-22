@@ -60,4 +60,5 @@ Lifesearch::Application.routes.draw do
   match '/logout' => 'sessions#destroy'
   get  'auth/failure' => 'sessions#failure'
   get '/login' => 'sessions#new'
+  post '/login_as_anonymous' => 'sessions#anonymous'
 end

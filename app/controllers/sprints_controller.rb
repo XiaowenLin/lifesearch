@@ -40,12 +40,12 @@ class SprintsController < ApplicationController
 	end
 	def edit
 		@sprint = Sprint.find params[:id]
-    @sprints = Sprint.all
+    @sprints = Sprint.where(user_id: @current_user.id)
 	end
   def update
     @sprint = Sprint.find params[:id]
     @sprint.update_attributes! params[:sprint]
-    @sprints = Sprint.all
+    @sprints = Sprint.where(user_id: @current_user.id)
     flash[:notice] = "#{@sprint.name} was updated."
     redirect_to sprints_path
   end
@@ -56,7 +56,7 @@ class SprintsController < ApplicationController
     redirect_to sprints_path
   end
   def visual
-    @sprints = Sprint.all
+    @sprints = Sprint.where(user_id: @current_user.id)
     init_sprint = @sprints[0]
     root = Stree.new(init_sprint)
     @sprints[1..@sprints.size].each { |t|
