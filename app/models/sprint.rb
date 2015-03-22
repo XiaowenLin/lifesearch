@@ -15,6 +15,7 @@ class Sprint < ActiveRecord::Base
           desc: self.desc, hours: self.hours, 
           parent: self.parent, user_id: self.user_id)
     }
+    debugger
     return my_sprints
   end
   def repeat_tr_weekly
