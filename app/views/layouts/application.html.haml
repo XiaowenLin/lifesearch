@@ -1,23 +1,37 @@
 !!! 5
 %html
 	%html
-		= render :partial=>'sessions/login'
 		%title Lifesearch
 		= stylesheet_link_tag 'application'
 		= javascript_include_tag 'application'
 		= csrf_meta_tags
 		
 	%body
-		%div{:class => 'container'}
-			%header
-				= link_to(image_tag('pacman.png', :alt => 'Life Search', :class => 'round'), '/')
-				%nav{:class => "round"}
-					%ul
+		%nav{:class=>"navbar navbar-inverse navbar-fixed-top"}
+			%div{:class=>"container"}
+				%div{:class=>"navbar-header"}
+					%button{:type=>"button", :class=>"navbar-toggle collapsed", :'data-toggle'=>"collapse", :'data-target'=>"#navbar", :'aria-expanded'=>"false", :'aria-controls'=>"navbar"}
+						%span{:class=>"sr-only"} Toggle navigation
+						%span{:class=>"icon-bar"}
+						%span{:class=>"icon-bar"}
+						%span{:class=>"icon-bar"}
+
+					= link_to(image_tag('pacman.png', :alt => 'Life Search', :class => 'round'), '/')
+					
+				%div{:id=>"navbar", :class=>"navbar-collapse collapse"}
+					%ul{:class=>'nav navbar-nav'}
 						%li= link_to 'visual', '/sprints/visual'
-			%section{:class => 'round', :id => 'white_board'}
-				-# this goes just inside %body:
-				- if flash[:notice]
-					#notice.message= flash[:notice]
-				- elsif flash[:warning]
-					#warning.message= flash[:warning]
-				= yield
+					= render :partial=>'sessions/login'
+
+		%div{:class => 'jumbotron'}
+			%div{:class => 'container'}
+				%header
+					- link_to(image_tag('pacman.png', :alt => 'Life Search', :class => 'round'), '/')
+
+				%section{:class => 'round', :id => 'white_board'}
+					-# this goes just inside %body:
+					- if flash[:notice]
+						#notice.message= flash[:notice]
+					- elsif flash[:warning]
+						#warning.message= flash[:warning]
+					= yield

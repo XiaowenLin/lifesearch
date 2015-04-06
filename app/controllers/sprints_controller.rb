@@ -60,6 +60,7 @@ class SprintsController < ApplicationController
     if @sprints.count == 0
       flash[:notice] = 'No sprints to see. Create your umtimate goal first!'
       redirect_to sprints_path
+      return
     end
     init_sprint = @sprints[0]
     root = Stree.new(init_sprint)

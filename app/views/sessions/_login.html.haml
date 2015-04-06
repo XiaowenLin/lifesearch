@@ -1,6 +1,6 @@
 #login
   - if @current_user
-    %p.welcome user: #{@current_user.name}
-    = button_to 'Logout', logout_path
+    /%p{:class=>"navbar-brand"} user: #{@current_user.name}
+    = button_to "Logout: #{@current_user.name}", logout_path, :class=>"btn btn-success navbar-btn", :type=>"submit", :style=>"float: right"
   - else
-    %p#login_button= button_to 'Log in with Twitter', '/auth/twitter'
+    = button_to 'Log in with Twitter', '/auth/twitter', :class=>"btn btn-success navbar-btn", :type=>"submit", :id=>'login_button', :style=>"float: right"
