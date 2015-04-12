@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require d3
-//= require bootstrap-sprockets
 //= require_tree .

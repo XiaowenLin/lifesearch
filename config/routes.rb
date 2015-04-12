@@ -4,7 +4,7 @@ Lifesearch::Application.routes.draw do
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
-  match 'sprints/visual' => 'sprints#visual'
+  match 'sprints/visual' => 'sprints#visual', :via=>[:get]
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
@@ -49,7 +49,7 @@ Lifesearch::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => redirect('/sprints')
+  root :to => redirect('/welcome')
 
   # See how all your routes lay out with "rake routes"
 
@@ -57,8 +57,10 @@ Lifesearch::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
   get 'auth/:provider/callback' => 'sessions#create'
-  match '/logout' => 'sessions#destroy'
+  match '/logout' => 'sessions#destroy', via: [:delete, :post]
+  match '/welcome' => 'sessions#show', via: [:get]
   get  'auth/failure' => 'sessions#failure'
   get '/login' => 'sessions#new'
   post '/login_as_anonymous' => 'sessions#anonymous'
+  get '/login_as_anonymous' => 'sessions#anonymous'
 end

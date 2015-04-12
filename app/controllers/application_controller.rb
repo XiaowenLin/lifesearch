@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   def set_current_user
     # we exploit the fact that find_by_id(nil) returns nil
     @current_user ||= User.find_by_id(session[:user_id])
-    redirect_to '/login' and return unless @current_user
+    flash[:warning] = "Please login first"
+    redirect_to '/welcome' and return unless @current_user
   end
 end

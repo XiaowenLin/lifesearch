@@ -15,23 +15,28 @@
 						%span{:class=>"icon-bar"}
 						%span{:class=>"icon-bar"}
 						%span{:class=>"icon-bar"}
-
-					= link_to(image_tag('pacman.png', :alt => 'Life Search', :class => 'round'), '/')
+					= link_to(image_tag('pacman.png', :alt => 'Life Search', :class => 'round'), '/')		
 					
 				%div{:id=>"navbar", :class=>"navbar-collapse collapse"}
-					%ul{:class=>'nav navbar-nav'}
-						%li= link_to 'visual', '/sprints/visual'
+					%ul{:class=>"nav navbar-nav"}
+						%li= link_to 'tables', '/sprints'
+						%li{:class=>'dropdown'}
+							%a{:href=>"#", :'data-toggle'=>"dropdown", :class=>"dropdown-toggle"}
+								crystal balls
+								%span{:class=>"caret"}
+							%ul{:class=>"dropdown-menu", :role=>"manu"}
+								%li
+									%a{href:"/sprints/visual", :class=>"dropdown-toggle"} life map
+								%li
+									%a{href:"#"} Other features..
+					
 					= render :partial=>'sessions/login'
 
-		%div{:class => 'jumbotron'}
-			%div{:class => 'container'}
-				%header
-					- link_to(image_tag('pacman.png', :alt => 'Life Search', :class => 'round'), '/')
-
-				%section{:class => 'round', :id => 'white_board'}
-					-# this goes just inside %body:
-					- if flash[:notice]
-						#notice.message= flash[:notice]
-					- elsif flash[:warning]
-						#warning.message= flash[:warning]
-					= yield
+		%div{:class => 'container'}
+			%div{:class => 'jumbotron'}
+				-# this goes just inside %body:
+				- if flash[:notice]
+					#notice.message= flash[:notice]
+				- elsif flash[:warning]
+					#warning.message= flash[:warning]
+				= yield
