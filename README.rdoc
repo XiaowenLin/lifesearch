@@ -15,7 +15,7 @@ Easy to see and use:
 
 * -- Try It Out with Anonymous account!!!
 
-[Visit LifeSearch!](lifesearch.heroku.com/)
+[lifesearch.heroku.com/]
 
 
 More features will be added...
